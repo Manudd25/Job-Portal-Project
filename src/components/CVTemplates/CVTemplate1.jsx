@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useRef } from 'react';
 import { MdAccountCircle } from "react-icons/md";
 
 const CVTemplate1 = ({ onDataChange }) => {
@@ -60,6 +61,24 @@ const CVTemplate1 = ({ onDataChange }) => {
     },
   });
 
+  const [profileImage, setProfileImage] = useState(null);
+  const fileInputRef = useRef(null);
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleEdit = (field, value) => {
     setData((prev) => ({
       ...prev,
@@ -73,8 +92,26 @@ const CVTemplate1 = ({ onDataChange }) => {
       {/* Profile Image and Contact Info */}
       <div className="flex justify-between mb-16">
         {/* Profile Image */}
-        <div className="w-32 h-40">
-          <MdAccountCircle className="w-full h-full text-gray-400" />
+        <div 
+          className="w-32 h-40 cursor-pointer"
+          onClick={handleImageClick}
+        >
+          {profileImage ? (
+            <img 
+              src={profileImage} 
+              alt="Profile" 
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <MdAccountCircle className="w-full h-full text-gray-400" />
+          )}
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleImageChange}
+            accept="image/*"
+            className="hidden"
+          />
         </div>
 
         {/* Contact Info - Right Aligned */}
