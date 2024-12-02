@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 lg:px-4">
           {/* Stepstone Section */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Stepstone</h4>
+            <h4 className="font-semibold text-lg mb-4">Jobify</h4>
             <ul>
               <li><a href="#" className="hover:underline">About us</a></li>
               <li><a href="#" className="hover:underline">Press Release</a></li>
@@ -77,7 +77,7 @@ const Footer = () => {
           </ul>
           <hr className="mt-4 h-1 w-full bg-gray-500 border-0"/>
           <div className="flex justify-between items-center py-4">
-            <p className=" ">© The Stepstone Group GmbH 2024</p>
+            <p className=" ">© Jobify 2024</p>
             <LanguageDropdown/>
           </div>
 
