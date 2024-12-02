@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
@@ -7,22 +6,20 @@ import CvBuilder from './pages/CvBuilder'
 import BuildCV from './pages/BuildCV'
 import Main from './components/Main'
 
-
-
-  <div className='min-h-screen flex flex-col'>
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/CvBuilder" element={<CvBuilder />} />
-        <Route path="/build" element={<BuildCV />} />
-         <Footer/>
-        {/* Your other routes */}
-      </Routes>
-    </Router>
+function App() {
+  return (
+    <div>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/CvBuilder" element={<CvBuilder />} />
+          <Route path="/build" element={<BuildCV />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
-};
-
+}
 
 export default App;
